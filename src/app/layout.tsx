@@ -9,8 +9,7 @@ const FX_SITE = {
   url: "https://falconext.com",
   email: "hola@falconext.com",
   phone: "+51 932 332 556",
-  logo: "/falconext-icon-512.png",
-  mark: "/falconext-mark.svg",
+  logo: "/assets/fnlogo.png",
   og: "/assets/bannerfx.png",
   socials: {
     instagram: "https://instagram.com/falconext",
@@ -51,11 +50,11 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: FX_SITE.name,
     icons: {
       icon: [
-        { url: FX_SITE.mark, type: "image/svg+xml" },
-        { url: FX_SITE.logo, sizes: "512x512", type: "image/png" },
+        { url: FX_SITE.logo, sizes: "32x32", type: "image/png" },
+        { url: FX_SITE.logo, sizes: "192x192", type: "image/png" },
       ],
       apple: [{ url: FX_SITE.logo, sizes: "180x180", type: "image/png" }],
-      shortcut: [FX_SITE.mark],
+      shortcut: [FX_SITE.logo],
     },
     manifest: "/manifest.json",
     openGraph: {

@@ -36,9 +36,14 @@ export default function AgencyNav() {
       >
         {/* Logo */}
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[#FFAB00] to-[#6366F1] text-[15px] font-black text-[#0a0a0c] shadow-[0_6px_20px_-6px_rgba(255,171,0,0.6)]">
-            F
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/fnlogo.png"
+            alt="Falconext"
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-lg object-contain"
+          />
           <span className="text-[17px] font-bold tracking-tight text-[#f4f5f7]">
             {FX.name}
           </span>
