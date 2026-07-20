@@ -47,3 +47,96 @@
     font-family: "Povlar Slant", sans-serif;
   }
 }
+
+/* ============================================================
+   FALCONEXT · Agency Landing — Design Tokens & Premium Utils
+   Estilo: Bento premium (Apple-style) · dark cinematic
+   Acentos: Ámbar #FFAB00 + Violeta #6366F1
+   ============================================================ */
+@layer base {
+  :root {
+    --fx-bg: #0a0a0c;
+    --fx-bg-2: #0e0e12;
+    --fx-surface: rgba(255, 255, 255, 0.03);
+    --fx-surface-2: rgba(255, 255, 255, 0.05);
+    --fx-border: rgba(255, 255, 255, 0.08);
+    --fx-border-strong: rgba(255, 255, 255, 0.14);
+    --fx-fg: #f4f5f7;
+    --fx-muted: #9ba1ac;
+    --fx-amber: #ffab00;
+    --fx-violet: #6366f1;
+    --fx-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer utilities {
+  /* Texto con degradado ámbar → violeta */
+  .fx-text-gradient {
+    background-image: linear-gradient(100deg, #ffcf5c 0%, #ffab00 38%, #a78bfa 78%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Borde con degradado (para tarjetas destacadas) */
+  .fx-ring-gradient {
+    position: relative;
+  }
+  .fx-ring-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, rgba(255, 171, 0, 0.5), rgba(99, 102, 241, 0.45), rgba(255, 255, 255, 0.04));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  /* Grano sutil para dar textura premium al fondo */
+  .fx-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Blob ambiental (glow) que flota lentamente — animación en compositor */
+  .fx-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    will-change: transform;
+    animation: fx-float 16s var(--fx-ease) infinite alternate;
+  }
+  .fx-grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+}
+
+@keyframes fx-float {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(30px, -40px, 0) scale(1.12); }
+}
+
+@keyframes fx-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-blob { animation: none !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

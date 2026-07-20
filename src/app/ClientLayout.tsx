@@ -28,8 +28,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     const hide = ['/iniciar-sesion', '/administrador', '/brochure', '/hotel', '/asesores']
     const isMypeRoute = hide.some(route => pathname.startsWith(route))
 
-    if (isMypeRoute) {
-        // para /login, /administrador y sus subrutas
+    // La home "/" es la landing de agencia (Falconext), autocontenida con su
+    // propio nav y footer premium: no le añadimos el chrome global de Krezka.
+    const isAgencyHome = pathname === '/'
+
+    if (isMypeRoute || isAgencyHome) {
         return <>{children}</>
     }
 
