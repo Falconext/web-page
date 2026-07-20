@@ -1,27 +1,32 @@
 {
-    "name": "Falconext - Sistema de Facturación Electrónica",
+    "name": "Falconext - Estudio de software",
     "short_name": "Falconext",
-    "description": "El sistema de facturación electrónica #1 en Perú. Emite boletas, facturas y notas de crédito homologadas con SUNAT.",
+    "description": "Estudio de software en Perú: software a medida, páginas web, e-commerce y aplicaciones móviles.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#0E0E0E",
-    "theme_color": "#6366F1",
+    "background_color": "#0a0a0c",
+    "theme_color": "#0a0a0c",
     "orientation": "portrait",
     "icons": [
         {
-            "src": "/assets/logo.png",
+            "src": "/falconext-icon-512.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/assets/logo.png",
+            "src": "/falconext-icon-512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/falconext-mark.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
         }
     ],
     "categories": [
         "business",
-        "finance",
+        "technology",
         "productivity"
     ],
     "lang": "es-PE"

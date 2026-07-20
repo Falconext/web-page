@@ -2,62 +2,74 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import Script from "next/script";
-import { BRAND } from "@/lib/branding";
+
+/** Identidad de la web pública: Falconext (estudio de software). */
+const FX_SITE = {
+  name: "Falconext",
+  url: "https://falconext.com",
+  email: "hola@falconext.com",
+  phone: "+51 972 258 391",
+  logo: "/falconext-icon-512.png",
+  mark: "/falconext-mark.svg",
+  og: "/assets/bannerfx.png",
+  socials: {
+    instagram: "https://instagram.com/falconext",
+    linkedin: "https://www.linkedin.com/company/falconext",
+  },
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  const brandLogo = "/assets/krezka/krezkalogo.png";
-  const ogImage = `${BRAND.website}${brandLogo}`;
-  const title = "Krezka | Facturación Electrónica SUNAT y POS para Negocios en Perú";
-  const description = "Krezka: software de facturación electrónica SUNAT con POS, control de inventario y gestión comercial para negocios en Perú.";
+  const title = "Falconext | Desarrollo de software, páginas web, e-commerce y apps";
+  const description =
+    "Estudio de software en Perú. Creamos software a medida, páginas web, landings, e-commerce y aplicaciones móviles con diseño de nivel mundial e ingeniería que convierte.";
 
   return {
-    metadataBase: new URL(BRAND.website),
+    metadataBase: new URL(FX_SITE.url),
     title: {
       default: title,
-      template: `%s | ${BRAND.name} - Facturación Electrónica Perú`
+      template: `%s | ${FX_SITE.name}`,
     },
     description,
     keywords: [
-      "facturación electrónica",
-      "facturación electrónica perú",
-      "sistema de facturación",
-      "software de facturación",
-      "facturación sunat",
-      "punto de venta",
-      BRAND.name.toLowerCase(),
-      `${BRAND.name.toLowerCase()} peru`,
-      "boleta electrónica",
-      "factura electrónica",
-      "software sunat",
-      "sistema pos peru",
-      "control de inventario peru"
+      "desarrollo de software",
+      "software a medida",
+      "agencia de software",
+      "estudio de software perú",
+      "desarrollo web perú",
+      "páginas web",
+      "landing page",
+      "ecommerce perú",
+      "tienda online",
+      "aplicaciones móviles",
+      "app móvil perú",
+      "desarrollo de apps",
+      "diseño ux ui",
+      "falconext",
     ],
-    authors: [{ name: BRAND.name, url: BRAND.website }],
-    creator: BRAND.name,
-    publisher: BRAND.name,
+    authors: [{ name: FX_SITE.name, url: FX_SITE.url }],
+    creator: FX_SITE.name,
+    publisher: FX_SITE.name,
     icons: {
       icon: [
-        { url: brandLogo, sizes: '32x32', type: 'image/png' },
-        { url: brandLogo, sizes: '192x192', type: 'image/png' },
+        { url: FX_SITE.mark, type: "image/svg+xml" },
+        { url: FX_SITE.logo, sizes: "512x512", type: "image/png" },
       ],
-      apple: [
-        { url: brandLogo, sizes: '180x180', type: 'image/png' },
-      ],
-      shortcut: [brandLogo],
+      apple: [{ url: FX_SITE.logo, sizes: "180x180", type: "image/png" }],
+      shortcut: [FX_SITE.mark],
     },
-    manifest: '/manifest.json',
+    manifest: "/manifest.json",
     openGraph: {
       title,
       description,
-      url: `${BRAND.website}/`,
-      siteName: `${BRAND.name} - Facturación Electrónica Perú`,
+      url: `${FX_SITE.url}/`,
+      siteName: FX_SITE.name,
       images: [
         {
-          url: ogImage,
+          url: FX_SITE.og,
           width: 1200,
           height: 630,
-          alt: `${BRAND.name} - Sistema de Facturación Electrónica para PYMES en Perú`
-        }
+          alt: `${FX_SITE.name} - Estudio de software en Perú`,
+        },
       ],
       locale: "es_PE",
       type: "website",
@@ -66,11 +78,11 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
-      creator: `@${BRAND.name.toLowerCase()}`
+      images: [FX_SITE.og],
+      creator: `@${FX_SITE.name.toLowerCase()}`,
     },
     alternates: {
-      canonical: BRAND.website,
+      canonical: FX_SITE.url,
     },
     robots: {
       index: true,
@@ -83,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-video-preview": -1,
       },
     },
-    category: "business",
+    category: "technology",
   };
 }
 
@@ -92,50 +104,45 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Structured Data for SEO (JSON-LD)
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": BRAND.name,
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web, Windows, macOS",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "PEN",
-      "description": "Prueba gratis disponible"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "150"
-    },
-    "description": `Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.`,
-    "url": BRAND.website,
-    "logo": `${BRAND.website}${BRAND.logo}`,
-    "sameAs": [
-      BRAND.socials.facebook,
-      BRAND.socials.instagram
-    ].filter(Boolean)
-  };
-
+  // Structured Data for SEO (JSON-LD) — Falconext como estudio de software.
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": BRAND.name,
-    "url": BRAND.website,
-    "logo": `${BRAND.website}${BRAND.logo}`,
-    "contactPoint": {
+    name: FX_SITE.name,
+    url: FX_SITE.url,
+    logo: `${FX_SITE.url}${FX_SITE.logo}`,
+    email: FX_SITE.email,
+    description:
+      "Estudio de software en Perú: software a medida, páginas web, e-commerce y aplicaciones móviles.",
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": BRAND.phone,
-      "contactType": "sales",
-      "areaServed": "PE",
-      "availableLanguage": "Spanish"
+      telephone: FX_SITE.phone,
+      contactType: "sales",
+      areaServed: "PE",
+      availableLanguage: "Spanish",
     },
-    "address": {
+    address: {
       "@type": "PostalAddress",
-      "addressCountry": "PE"
-    }
+      addressCountry: "PE",
+    },
+    sameAs: [FX_SITE.socials.instagram, FX_SITE.socials.linkedin].filter(Boolean),
+  };
+
+  const serviceData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: FX_SITE.name,
+    url: FX_SITE.url,
+    image: `${FX_SITE.url}${FX_SITE.logo}`,
+    priceRange: "$$",
+    areaServed: "PE",
+    description:
+      "Desarrollo de software a medida, páginas web, landings, e-commerce y apps móviles.",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "50",
+    },
   };
 
   return (
@@ -146,7 +153,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#6366F1" />
+        <meta name="theme-color" content="#0a0a0c" />
         <link
           precedence="default"
           rel="stylesheet"
@@ -163,16 +170,14 @@ export default function RootLayout({
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceData) }}
         />
       </head>
-      <body
-      // className={`${sg.className}`}
-      >
+      <body>
         <ClientLayout children={children} />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17010708778"
@@ -191,7 +196,6 @@ export default function RootLayout({
           }}
         />
       </body>
-
     </html>
   );
 }
