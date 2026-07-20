@@ -8,7 +8,7 @@ const FX_SITE = {
   name: "Falconext",
   url: "https://falconext.com",
   email: "hola@falconext.com",
-  phone: "+51 972 258 391",
+  phone: "+51 932 332 556",
   logo: "/falconext-icon-512.png",
   mark: "/falconext-mark.svg",
   og: "/assets/bannerfx.png",

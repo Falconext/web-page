@@ -8,10 +8,10 @@ import type { IconName } from "./icons";
 export const FX = {
   name: "Falconext",
   tagline: "Software que impulsa negocios",
-  whatsapp: "51972258391",
+  whatsapp: "51932332556",
   email: "hola@falconext.com",
   website: "https://falconext.com",
-  phoneLabel: "+51 972 258 391",
+  phoneLabel: "+51 932 332 556",
   socials: {
     instagram: "#",
     linkedin: "#",
